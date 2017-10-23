@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>{% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <title>New User</title>
+</head>
+<body>
+    <h1>Add a new user</h1>
+    {% if messages %}
+        {% for message in messages %}
+        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <div class="container-fluid">
+        <table class="table table-striped">
+            <form action='/users/create' method='post'>
+                {% csrf_token %}
+                First Name:<input type="text" id="first_name" name="first_name"><br>
+                Last Name:<input type="text" id="last_name" name="last_name"><br>
+                Email<input type="text" id="email" name="email">
+                <input type='submit' value='Create' />
+                <br>
+                <a href="/users">Go back</a>
+            </form>
+        </table>
+    </div>
+</body>
+</html>
