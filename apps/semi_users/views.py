@@ -54,6 +54,8 @@ def update(request, id):
         return redirect('/users/{}/edit'.format(id))
 
     u = User.objects.get(id=id)
+    # instead of a multi-line update, try this:
+    # User.objects.filter(id=id).update(your params)
     u.first_name = request.POST['first_name']
     u.last_name = request.POST['last_name']
     u.email = request.POST['email']
