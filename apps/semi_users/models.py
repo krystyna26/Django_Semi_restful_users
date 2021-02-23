@@ -8,9 +8,9 @@ class UserManager(models.Manager):
     def basic_validator(self, postData):
         errors = {}
         # check users name
-        if len(postData['first_name']) < 5:
+        if len(postData['first_name']) < 2:
             errors["first_name"] = "User first name should be more than 5 characters"
-        if len(postData['last_name']) < 5:
+        if len(postData['last_name']) < 2:
             errors["last_name"] = "User last name should be more than 5 characters"
         # check email field for valid email
         if not "email" in errors and not re.match(EMAIL_REGEX, postData['email']):
